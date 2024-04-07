@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html <html xmlns:th="www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Homepage of Assignmnet1 </title>
+</head>
+<style>
+	h1 {
+	color: black;
+	margin-top: 0;
+	}
+	
+	body{
+	background-color: lightsalmon;
+	text-align:center;
+	color: black;
+	}
+	
+	header{
+    height: 30px;
+    position: relative;
+	}
+	
+	.nav1{
+    height: 30px;
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 5px;
+    background-color: magenta;
+	}
+		
+    .div1{
+    margin-top: 75px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-areas: 
+    "box1 box2";
+    background-color: lightseagreen;
+    text-align: center;
+    justify-content: space-between;
+	}
+	
+	.box1{
+    grid-area: box1;
+    border: thin;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 0px 0px 5px black;
+	}
+	.box1:hover{
+    margin: 10px;
+    box-shadow: 0px 0px 20px black;
+	}
+	
+	.box2{
+    margin-top: 20px;
+    grid-area: box2;
+    font-size: 50px;  
+    
+	}
+
+	.div2{
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 0,7fr;
+    grid-template-areas: 
+    "box3 box4";
+    background-color: lightblue;
+    text-align: center;
+    justify-content: space-between;
+	}
+	
+	.box3{
+    margin-top: 20px;
+    grid-area: box3;
+    font-size: 50px;  
+}
+	.box4{
+    margin-top: 20px;
+    grid-area: box4;
+    border: thin;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 0px 0px 5px black;
+	}
+	.box4:hover{
+    margin: 10px;
+    box-shadow: 0px 0px 20px black;
+	}
+	
+	.div3{
+    margin-top: 20px;
+    display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 0.7fr 1fr;
+    grid-template-areas: 
+    "box5 box6";
+    background-color: lightpink;
+    text-align: center;
+    justify-content: space-between;
+	}
+	
+	.box5{
+    grid-area: box5;
+    border: thin;
+    border-radius: 5px;
+    margin: 20px;
+    box-shadow: 0px 0px 5px black;
+	}
+	.box5:hover{
+    margin: 10px;
+    box-shadow: 0px 0px 20px black;
+	}
+	.box6{
+    margin-top: 20px;
+    grid-area: box6;
+    font-size: 50px;  
+    
+	}
+	.sec4{
+    margin: 60px;
+	}
+	.main{
+    display: flex;
+    justify-content: space-evenly;
+    background-color: palevioletred;
+    box-shadow: 0px 0px 5px black;
+	} 
+	
+</style>
+<body>		
+		<header>
+            <nav class="nav1">
+            	<h1> Darshit's Garba Night </h1>
+                <a href="/add">Get Tickets</a>
+                <a href="/">Homepage</a>
+                <a href="/view">View all tickets</a>
+                <a href="#">Hours and Location </a>
+                <a href="#">Event Information</a>
+                
+                
+            </nav>
+
+        <div th:if = "${param.logout}" class ="alert">
+		You have been logged out
+		</div>
+		
+		<div sec:authorize="isAuthenticated()">
+User's Name: <span sec:authentication="name"></span>
+Roles: <span sec:authentication="principal.authorities"></span>
+<br><br>
+<form action="#" th:action="@{/logout}" method="post">
+<input type="submit" value="Logout">
+</form>
+</div></header>
+        
+        <section class="sec1">
+            <div class="div1">
+            <br> <br>
+            <img class="box1" src="/Images/Garba1.png" height="400" width="500" alt="Garba image 1">
+            <p class="box2"> Welcome to one of the most awaited events of GTA. Garba Nights hosted by Darshit </p>
+        </div>
+        </section>
+        <section class="sec2">
+            <div class="div2">
+            <br> <br>
+            <p class="box3"> The Canadian Gujarati event management and exhibitors welcome you to the 2023 Fall Canadian Garba Night!We’re excited to be hosting FOUR shows under one roof this fall, featuring the Canadian Garba Night, 
+            				the Canadian Dandiya Drills, the Canadian Gujarati Songs Concert and the Sanedo!   </p>
+            <img class="box4" src="/Images/Garba2.png" height="400" width="500" alt="Garba image 2">
+            
+        </div>
+        </section>
+        <section class="sec3">
+            <div class="div3">
+            <br> <br>
+           
+            <img class="box5" src="/Images/Garba3.png" height="400" width="500" alt="Garba image 3">
+            <p class="box6"> We have an exciting weekend planned, with interactive activations, creative grooming demos, 
+            				dance focused Marketplace featuring some of the best traditional product vendors in the industry! 
+            				Join us for a weekend of fun and excitement 
+            				 while promoting responsible dandiyas – we cannot wait to see you!  </p>
+        </div>
+        </section>
+        
+<a href="/add"> Purchase a ticket </a> <br> <br>
+<a href="/view"> View all tickets purchased </a>
+</body>
+</html>
